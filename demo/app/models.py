@@ -20,10 +20,10 @@ class Item(models.Model):
 class Order(models.Model):
     uuid = models.CharField('ID заказа', max_length=64,
                             default=get_uuid, primary_key=True)
-    item = models.ForeignKey('app.Item', verbose_name='Товар', on_delete=models.SET_NULL())
+    item = models.ForeignKey('app.Item', verbose_name='Товар', on_delete=models.SET_NULL, null=True)
     count = models.PositiveIntegerField('Кол-во', default=1)
     payment = models.ForeignKey('yandex_kassa.Payment',
-                                verbose_name='Платеж', on_delete=models.SET_NULL())
+                                verbose_name='Платеж', on_delete=models.SET_NULL, null=True)
     amount = models.PositiveIntegerField('Сумма заказа')
 
     class Meta:
