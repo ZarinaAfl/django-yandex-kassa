@@ -60,7 +60,7 @@ class Payment(models.Model):
         )
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True,
-                             verbose_name='Пользователь')
+                             verbose_name='Пользователь', on_delete=models.SET_NULL)
     customer_number = models.CharField('Номер заказа',
                                        unique=True, max_length=64,
                                        default=get_uuid)
